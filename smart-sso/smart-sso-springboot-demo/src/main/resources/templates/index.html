@@ -10,12 +10,12 @@
         <br/> <b>登录用户名</b>：<span th:text="${userName}" /><br/>
 
         <br/> <b>登录用户当前应用的菜单</b>：
-        <div th:each="menu,menuStat : ${userMenus}">
+        <div th:each="menu : ${userMenus}">
             <div th:text="${menu.name}"></div>
         </div>
 
         <br/> <b>登录用户当前应用的权限</b>：
-        <div th:each="item,itemStat : ${userPermissions}">
+        <div th:each="item : ${userPermissions}">
             <div th:text="${item}"></div>
         </div>
 

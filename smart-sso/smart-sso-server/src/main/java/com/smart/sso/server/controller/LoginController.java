@@ -39,8 +39,10 @@ import io.swagger.annotations.ApiParam;
 @Controller
 @RequestMapping("/login")
 public class LoginController extends BaseController{
-	
-	// 登录页
+
+	/**
+	 * 登录页
+	 */
 	private static final String LOGIN_PATH = "/login";
 
 	@Resource
@@ -83,7 +85,8 @@ public class LoginController extends BaseController{
 			User user = (User) result.getData();
 			LoginUser loginUser = new LoginUser(user.getId(), user.getAccount());
 			String token = CookieUtils.getCookie(request, TokenManager.TOKEN);
-			if (StringUtils.isBlank(token) || tokenManager.validate(token) == null) {// 没有登录的情况
+			// 没有登录的情况
+			if (StringUtils.isBlank(token) || tokenManager.validate(token) == null) {
 				token = createToken(loginUser);
 				addTokenInCookie(token, request, response);
 			}
